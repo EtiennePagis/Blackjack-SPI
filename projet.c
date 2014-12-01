@@ -89,6 +89,10 @@ int main (){
 			printf("Vous avez pioché la carte : ");
 			afficher_carte(num);
 			evaluer_score(JOUEUR, num, &score_joueur);
+			if(score_joueur > 21){
+				score_joueur = score_joueur -10*nb_as_joueur;
+				nb_as_joueur = 0;
+			}
 			printf("Votre score est de %i \n", score_joueur);
 		}
 		if(score_joueur > 21){
@@ -108,7 +112,7 @@ int main (){
 	while(score_banque < score_joueur){
 			
 		num = tirer_carte(BANQUE);
-		evaluer_score(BANQUE, num, score_banque);
+		evaluer_score(BANQUE, num, &score_banque);
 		afficher_carte(num);
 		
 	}	
