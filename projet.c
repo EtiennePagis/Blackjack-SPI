@@ -66,6 +66,7 @@ void init(short *score_joueur,short* score_banque){
 *\brief fonction principale
 */
 int main (){
+	system("clear");
 	int num;
 	char choix[50]; 
 	short score_joueur = 0, score_banque = 0;
@@ -89,6 +90,10 @@ int main (){
 			printf("Vous avez pioché la carte : ");
 			afficher_carte(num);
 			evaluer_score(JOUEUR, num, &score_joueur);
+			if(score_joueur > 21){
+				score_joueur = score_joueur -10*nb_as_joueur;
+				nb_as_joueur = 0;
+			}
 			printf("Votre score est de %i \n", score_joueur);
 		}
 		if(score_joueur > 21){
@@ -96,30 +101,39 @@ int main (){
 			nb_as_joueur = 0;
 		}	
 	}
-	
+	system("clear");
 	if ( score_joueur == 21 ) {
+		printf("Votre score etait de %i \n", score_joueur);
 		printf("You rock WOOHOO !\n");
 		return(0); 
 	}
 	if ( score_joueur > 21 ) { 
+		printf("Votre score etait de %i \n", score_joueur);
 		printf("You'll win the next time...\n");
 		return(0);
 	}
 	while(score_banque < score_joueur){
 			
 		num = tirer_carte(BANQUE);
-		evaluer_score(BANQUE, num, score_banque);
+		evaluer_score(BANQUE, num, &score_banque);
 		afficher_carte(num);
+		if(score_banque > 21){
+			score_banque = score_banque -10*nb_as_banque;
+			nb_as_banque = 0;
+		}	
 		
 	}	
 	
+
 	if(score_banque > 21){
 		printf("Vous avez gagné !\n");
 		printf("Le score de la banque était de %i \n",score_banque);
+		printf("Votre score etait de %i \n", score_joueur);
 		return(0);
 	}else{
 		printf("Vous avez perdu.\n");
 		printf("Le score de la banque était de %i \n",score_banque);
+		printf("Votre score etait de %i \n", score_joueur);
 		return(0);
 	}
 	
