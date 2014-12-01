@@ -1,0 +1,3 @@
+Les noms des personnes qui composent ce groupes sont : GRUDE Victorien, FOUQUET Stevy, PAGIS Etienne
+Afin de pouvoir compiler tout notre code il faut utiliser le makefile dans un dossier contenant tous nos .h et nos .c
+Nous avons un doute sur la fonction de test et sur certain cas qui peuvent arriver durant une partie de black-jack lancer par notre programme 
